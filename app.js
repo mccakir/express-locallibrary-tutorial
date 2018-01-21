@@ -16,8 +16,8 @@ var catalog = require('./routes/catalog');
 
 var app = express();
 
-//Set up mongoose connection
-var mongoDB = 'mongodb://at_admin:1Q2w3e4r_@ds251737.mlab.com:51737/local_library';
+//Set up mongodb connection according to predefined envorinment variable otherwise use harcoded string
+var mongoDB = process.env.MONGODB_URI || 'mongodb://at_admin:1Q2w3e4r_@ds251737.mlab.com:51737/local_library';
 mongoose.connect(mongoDB, {useMongoClient: true});
 //Get mongoose to use the global promise library
 mongoose.Promise = global.Promise;
